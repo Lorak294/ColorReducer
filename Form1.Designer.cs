@@ -44,13 +44,19 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.popularityPictureBox = new System.Windows.Forms.PictureBox();
             this.kmeansPictureBox = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.epsilonLabel = new System.Windows.Forms.Label();
+            this.epsilonTrackBar = new System.Windows.Forms.TrackBar();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.uploadImageBtn = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.colorsTrackBar = new System.Windows.Forms.TrackBar();
             this.clusterImageBtn = new System.Windows.Forms.Button();
             this.changeImageBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
@@ -61,12 +67,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.rNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popularityPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kmeansPictureBox)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epsilonTrackBar)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorsTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -80,6 +89,8 @@
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.popularityPictureBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.kmeansPictureBox, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel4, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 360);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -87,7 +98,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(993, 317);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1183, 317);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // propagationPictureBox
@@ -96,7 +107,7 @@
             this.propagationPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propagationPictureBox.Location = new System.Drawing.Point(4, 105);
             this.propagationPictureBox.Name = "propagationPictureBox";
-            this.propagationPictureBox.Size = new System.Drawing.Size(320, 208);
+            this.propagationPictureBox.Size = new System.Drawing.Size(383, 208);
             this.propagationPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.propagationPictureBox.TabIndex = 4;
             this.propagationPictureBox.TabStop = false;
@@ -117,7 +128,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(320, 94);
+            this.panel2.Size = new System.Drawing.Size(383, 94);
             this.panel2.TabIndex = 6;
             // 
             // label7
@@ -125,7 +136,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(45, 10);
+            this.label7.Location = new System.Drawing.Point(76, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(240, 15);
             this.label7.TabIndex = 10;
@@ -246,7 +257,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(212, 42);
+            this.label1.Location = new System.Drawing.Point(248, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 15);
             this.label1.TabIndex = 1;
@@ -260,9 +271,9 @@
             "Floyd-Steinberg",
             "Burkes",
             "Stucky"});
-            this.comboBox1.Location = new System.Drawing.Point(212, 60);
+            this.comboBox1.Location = new System.Drawing.Point(248, 60);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(97, 23);
+            this.comboBox1.Size = new System.Drawing.Size(124, 23);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
             // 
@@ -270,9 +281,9 @@
             // 
             this.popularityPictureBox.BackColor = System.Drawing.Color.White;
             this.popularityPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.popularityPictureBox.Location = new System.Drawing.Point(331, 105);
+            this.popularityPictureBox.Location = new System.Drawing.Point(394, 105);
             this.popularityPictureBox.Name = "popularityPictureBox";
-            this.popularityPictureBox.Size = new System.Drawing.Size(326, 208);
+            this.popularityPictureBox.Size = new System.Drawing.Size(390, 208);
             this.popularityPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.popularityPictureBox.TabIndex = 7;
             this.popularityPictureBox.TabStop = false;
@@ -281,12 +292,75 @@
             // 
             this.kmeansPictureBox.BackColor = System.Drawing.Color.White;
             this.kmeansPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kmeansPictureBox.Location = new System.Drawing.Point(664, 105);
+            this.kmeansPictureBox.Location = new System.Drawing.Point(791, 105);
             this.kmeansPictureBox.Name = "kmeansPictureBox";
-            this.kmeansPictureBox.Size = new System.Drawing.Size(325, 208);
+            this.kmeansPictureBox.Size = new System.Drawing.Size(388, 208);
             this.kmeansPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.kmeansPictureBox.TabIndex = 8;
             this.kmeansPictureBox.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(394, 4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(390, 94);
+            this.panel3.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(90, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(204, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Reduced using popularity algorithm";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.epsilonLabel);
+            this.panel4.Controls.Add(this.epsilonTrackBar);
+            this.panel4.Controls.Add(this.label9);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(791, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(388, 94);
+            this.panel4.TabIndex = 10;
+            // 
+            // epsilonLabel
+            // 
+            this.epsilonLabel.AutoSize = true;
+            this.epsilonLabel.Location = new System.Drawing.Point(8, 76);
+            this.epsilonLabel.Name = "epsilonLabel";
+            this.epsilonLabel.Size = new System.Drawing.Size(94, 15);
+            this.epsilonLabel.TabIndex = 14;
+            this.epsilonLabel.Text = "Epsilon value: 11";
+            // 
+            // epsilonTrackBar
+            // 
+            this.epsilonTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.epsilonTrackBar.Location = new System.Drawing.Point(8, 28);
+            this.epsilonTrackBar.Maximum = 100;
+            this.epsilonTrackBar.Name = "epsilonTrackBar";
+            this.epsilonTrackBar.Size = new System.Drawing.Size(374, 45);
+            this.epsilonTrackBar.TabIndex = 13;
+            this.epsilonTrackBar.Value = 11;
+            this.epsilonTrackBar.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(105, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(195, 15);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Reduced using k-means algorithm";
             // 
             // tableLayoutPanel1
             // 
@@ -301,7 +375,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(999, 680);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1189, 680);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -316,7 +390,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(993, 351);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1183, 351);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -332,7 +406,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(656, 345);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(782, 345);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // mainPictureBox
@@ -342,7 +416,7 @@
             this.mainPictureBox.Image = global::GKProj3.Properties.Resources.defaultImage;
             this.mainPictureBox.Location = new System.Drawing.Point(3, 3);
             this.mainPictureBox.Name = "mainPictureBox";
-            this.mainPictureBox.Size = new System.Drawing.Size(650, 282);
+            this.mainPictureBox.Size = new System.Drawing.Size(776, 282);
             this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.mainPictureBox.TabIndex = 1;
             this.mainPictureBox.TabStop = false;
@@ -350,13 +424,13 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.uploadImageBtn);
-            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Controls.Add(this.colorsTrackBar);
             this.panel1.Controls.Add(this.clusterImageBtn);
             this.panel1.Controls.Add(this.changeImageBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 291);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(650, 51);
+            this.panel1.Size = new System.Drawing.Size(776, 51);
             this.panel1.TabIndex = 1;
             // 
             // uploadImageBtn
@@ -368,23 +442,24 @@
             this.uploadImageBtn.Text = "Upload Image";
             this.uploadImageBtn.UseVisualStyleBackColor = true;
             // 
-            // trackBar1
+            // colorsTrackBar
             // 
-            this.trackBar1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.trackBar1.Location = new System.Drawing.Point(183, 3);
-            this.trackBar1.Maximum = 1024;
-            this.trackBar1.Minimum = 1;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(301, 45);
-            this.trackBar1.TabIndex = 2;
-            this.trackBar1.TickFrequency = 4;
-            this.trackBar1.Value = 12;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.colorsTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorsTrackBar.Location = new System.Drawing.Point(183, 3);
+            this.colorsTrackBar.Maximum = 1024;
+            this.colorsTrackBar.Minimum = 1;
+            this.colorsTrackBar.Name = "colorsTrackBar";
+            this.colorsTrackBar.Size = new System.Drawing.Size(427, 45);
+            this.colorsTrackBar.TabIndex = 2;
+            this.colorsTrackBar.TickFrequency = 4;
+            this.colorsTrackBar.Value = 12;
+            this.colorsTrackBar.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // clusterImageBtn
             // 
             this.clusterImageBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clusterImageBtn.Location = new System.Drawing.Point(490, 3);
+            this.clusterImageBtn.Location = new System.Drawing.Point(616, 3);
             this.clusterImageBtn.Name = "clusterImageBtn";
             this.clusterImageBtn.Size = new System.Drawing.Size(157, 45);
             this.clusterImageBtn.TabIndex = 1;
@@ -406,7 +481,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 680);
+            this.ClientSize = new System.Drawing.Size(1189, 680);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -419,13 +494,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.rNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popularityPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kmeansPictureBox)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epsilonTrackBar)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorsTrackBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -440,7 +520,7 @@
         private PictureBox mainPictureBox;
         private Panel panel1;
         private Button uploadImageBtn;
-        private TrackBar trackBar1;
+        private TrackBar colorsTrackBar;
         private Button clusterImageBtn;
         private Button changeImageBtn;
         private Panel panel2;
@@ -457,5 +537,11 @@
         private Label label7;
         private PictureBox popularityPictureBox;
         private PictureBox kmeansPictureBox;
+        private Panel panel3;
+        private Label label8;
+        private Panel panel4;
+        private Label label9;
+        private TrackBar epsilonTrackBar;
+        private Label epsilonLabel;
     }
 }
