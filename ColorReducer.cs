@@ -21,9 +21,6 @@ namespace GKProj3
         {
             imageWidth = baseImage.Width;
             imageHeight = baseImage.Height;
-            //bytesPerPixel = (Image.GetPixelFormatSize(baseImage.PixelFormat) + 7 )/ 8;
-            //ImageConverter converter = new ImageConverter();
-            //pixels = (byte[])converter.ConvertTo(baseImage, typeof(byte[]))!;
 
             pixels = new byte[imageWidth * imageHeight * 3];
             
@@ -42,7 +39,16 @@ namespace GKProj3
             }
 
         }
-        public abstract Bitmap Reduce(int ColorN);
+        public abstract Task<Bitmap> ReduceAsync(int ColorN);
+
+        protected int ColorsDistance2(Color c1, Color c2)
+        {
+            int deltaR = c2.R - c1.R;
+            int deltaG = c2.G - c1.G;
+            int deltaB = c2.B - c1.B;
+
+            return deltaR * deltaR + deltaG * deltaG + deltaB * deltaB;
+        }
     }
 
     public class PopularityColorReducer : ColorReducer
@@ -65,7 +71,7 @@ namespace GKProj3
             displayColors = new Color[0];
         }
 
-        public override Bitmap Reduce(int colorN)
+        public async override Task<Bitmap> ReduceAsync(int colorN)
         {
             displayColors = indexes.Take(colorN).Select(idx => ColorFromIndex(idx)).ToArray();
 
@@ -81,7 +87,7 @@ namespace GKProj3
                     pixelIdx += 3;
                 }
             }
-            return reducedImage;
+            return await Task.FromResult(reducedImage);
         }
 
         private Color CalcDisplayColor(Color col)
@@ -101,19 +107,98 @@ namespace GKProj3
             return displayCol;
         }
 
-        private int ColorsDistance2(Color c1, Color c2)
-        {
-            int deltaR = c2.R - c1.R;
-            int deltaG = c2.G - c1.G;
-            int deltaB = c2.B - c1.B;
-
-            return deltaR * deltaR + deltaG * deltaG + deltaB * deltaB;
-        }
-
         private Color ColorFromIndex(int idx)
         {
             return Color.FromArgb(idx >> 16 & 0xFF, idx >> 8 & 0xFF, idx & 0xFF);
         }
     }
 
+
+    public class KMeansColorReducer : ColorReducer
+    {
+        private int epsilon;
+        public KMeansColorReducer(Bitmap baseImage, int epsilon) : base(baseImage)
+        {
+            this.epsilon = epsilon;
+        }
+        public async override Task<Bitmap> ReduceAsync(int colorN)
+        {
+            Color[] centroids = new Color[colorN];
+            Random random = new Random();
+            int[] pixelToCentroid = new int[imageWidth*imageHeight];
+            (int R, int G, int B)[] centroidSums = new (int R, int G, int B)[colorN];
+            int[] centroidCount = new int[colorN];
+
+            // choose random initial centroids
+            for(int i=0;i<colorN;i++)
+            {
+                int rndPixelIdx = random.Next(imageWidth*imageHeight)*3;
+                centroids[i] = Color.FromArgb(pixels[rndPixelIdx], pixels[rndPixelIdx + 1], pixels[rndPixelIdx + 2]);
+            }
+
+
+            int iterationCount = 0;
+            bool centroidsChange = true;
+            // kmeans algorithm loop
+            while (centroidsChange)
+            {
+                iterationCount++;
+
+                // assign pixels to centorids
+                for(int pixelIdx=0; pixelIdx<pixels.Length; pixelIdx+=3 )
+                {
+                    Color c = Color.FromArgb(pixels[pixelIdx], pixels[pixelIdx + 1], pixels[pixelIdx + 2]);
+
+                    int newCentroidId = GetClosestCentroid(c, centroids);
+                    pixelToCentroid[pixelIdx / 3] = newCentroidId;
+                    centroidSums[newCentroidId] = (centroidSums[newCentroidId].R + c.R, centroidSums[newCentroidId].G + c.G, centroidSums[newCentroidId].B + c.B);
+                    centroidCount[newCentroidId]++;
+                }
+
+                // calc new centorids
+                centroidsChange = false;
+                for(int i=0; i<colorN; i++)
+                {
+                    if (centroidCount[i] == 0)
+                        continue;
+                    Color averageColor = Color.FromArgb((centroidSums[i].R / centroidCount[i]), (centroidSums[i].G / centroidCount[i]), (centroidSums[i].B / centroidCount[i]));
+                    if (Math.Abs(centroids[i].R - averageColor.R) > epsilon || Math.Abs(centroids[i].G - averageColor.G) > epsilon || Math.Abs(centroids[i].B - averageColor.B) > epsilon)
+                    {
+                        centroidsChange = true;
+                        centroids[i] = averageColor;
+                    }
+                }
+            }
+
+            // compose reduced image
+            Bitmap reducedImage = new Bitmap(imageWidth, imageHeight);
+            int pixelId = 0;
+            for(int y=0; y<imageHeight; y++)
+            {
+                for(int x=0; x<imageWidth; x++)
+                {
+                    reducedImage.SetPixel(x,y,centroids[pixelToCentroid[pixelId]]);
+                    pixelId++;
+                }
+            }
+            return await Task.FromResult(reducedImage);
+        }
+
+        private int GetClosestCentroid(Color c, Color[] centroids)
+        {
+            double minDist = ColorsDistance2(c, centroids[0]);
+            int centroId = 0;
+            for (int i = 1; i < centroids.Length; i++)
+            {
+                var dist = ColorsDistance2(c, centroids[i]);
+
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    centroId = i;
+                }
+            }
+            return centroId;
+        }
+    }
 }

@@ -55,10 +55,16 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.uploadImageBtn = new System.Windows.Forms.Button();
             this.colorsTrackBar = new System.Windows.Forms.TrackBar();
             this.clusterImageBtn = new System.Windows.Forms.Button();
             this.changeImageBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.propagationPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -76,6 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorsTrackBar)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -333,7 +346,7 @@
             // epsilonLabel
             // 
             this.epsilonLabel.AutoSize = true;
-            this.epsilonLabel.Location = new System.Drawing.Point(8, 76);
+            this.epsilonLabel.Location = new System.Drawing.Point(8, 68);
             this.epsilonLabel.Name = "epsilonLabel";
             this.epsilonLabel.Size = new System.Drawing.Size(94, 15);
             this.epsilonLabel.TabIndex = 14;
@@ -384,6 +397,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -413,7 +427,7 @@
             // 
             this.mainPictureBox.BackColor = System.Drawing.Color.White;
             this.mainPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPictureBox.Image = global::GKProj3.Properties.Resources.defaultImage;
+            this.mainPictureBox.Image = global::GKProj3.Properties.Resources.defaultImage1;
             this.mainPictureBox.Location = new System.Drawing.Point(3, 3);
             this.mainPictureBox.Name = "mainPictureBox";
             this.mainPictureBox.Size = new System.Drawing.Size(776, 282);
@@ -423,7 +437,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.uploadImageBtn);
             this.panel1.Controls.Add(this.colorsTrackBar);
             this.panel1.Controls.Add(this.clusterImageBtn);
             this.panel1.Controls.Add(this.changeImageBtn);
@@ -433,24 +446,15 @@
             this.panel1.Size = new System.Drawing.Size(776, 51);
             this.panel1.TabIndex = 1;
             // 
-            // uploadImageBtn
-            // 
-            this.uploadImageBtn.Location = new System.Drawing.Point(95, 3);
-            this.uploadImageBtn.Name = "uploadImageBtn";
-            this.uploadImageBtn.Size = new System.Drawing.Size(82, 45);
-            this.uploadImageBtn.TabIndex = 3;
-            this.uploadImageBtn.Text = "Upload Image";
-            this.uploadImageBtn.UseVisualStyleBackColor = true;
-            // 
             // colorsTrackBar
             // 
             this.colorsTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorsTrackBar.Location = new System.Drawing.Point(183, 3);
+            this.colorsTrackBar.Location = new System.Drawing.Point(95, 3);
             this.colorsTrackBar.Maximum = 1024;
             this.colorsTrackBar.Minimum = 1;
             this.colorsTrackBar.Name = "colorsTrackBar";
-            this.colorsTrackBar.Size = new System.Drawing.Size(427, 45);
+            this.colorsTrackBar.Size = new System.Drawing.Size(515, 45);
             this.colorsTrackBar.TabIndex = 2;
             this.colorsTrackBar.TickFrequency = 4;
             this.colorsTrackBar.Value = 12;
@@ -473,9 +477,108 @@
             this.changeImageBtn.Name = "changeImageBtn";
             this.changeImageBtn.Size = new System.Drawing.Size(86, 45);
             this.changeImageBtn.TabIndex = 0;
-            this.changeImageBtn.Text = "Change Image";
+            this.changeImageBtn.Text = "Upload Image";
             this.changeImageBtn.UseVisualStyleBackColor = true;
             this.changeImageBtn.Click += new System.EventHandler(this.changeImageBtn_Click);
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox6, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox5, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox4, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox3, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(791, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(389, 345);
+            this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox6.Image = global::GKProj3.Properties.Resources.defaultImage6;
+            this.pictureBox6.Location = new System.Drawing.Point(197, 233);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(189, 109);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 5;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Image = global::GKProj3.Properties.Resources.defaultImage5;
+            this.pictureBox5.Location = new System.Drawing.Point(3, 233);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(188, 109);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 4;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = global::GKProj3.Properties.Resources.defaultImage4;
+            this.pictureBox4.Location = new System.Drawing.Point(197, 118);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(189, 109);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.White;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::GKProj3.Properties.Resources.defaultImage3;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 118);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(188, 109);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = global::GKProj3.Properties.Resources.defaultImage2;
+            this.pictureBox2.Location = new System.Drawing.Point(197, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(189, 109);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::GKProj3.Properties.Resources.defaultImage1;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(188, 109);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Form1
             // 
@@ -484,7 +587,7 @@
             this.ClientSize = new System.Drawing.Size(1189, 680);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Color Reducer";
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.propagationPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -506,6 +609,13 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.colorsTrackBar)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,7 +629,6 @@
         private TableLayoutPanel tableLayoutPanel4;
         private PictureBox mainPictureBox;
         private Panel panel1;
-        private Button uploadImageBtn;
         private TrackBar colorsTrackBar;
         private Button clusterImageBtn;
         private Button changeImageBtn;
@@ -543,5 +652,12 @@
         private Label label9;
         private TrackBar epsilonTrackBar;
         private Label epsilonLabel;
+        private TableLayoutPanel tableLayoutPanel5;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox1;
     }
 }

@@ -63,9 +63,9 @@ namespace GKProj3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap defaultImage {
+        internal static System.Drawing.Bitmap defaultImage1 {
             get {
-                object obj = ResourceManager.GetObject("defaultImage", resourceCulture);
+                object obj = ResourceManager.GetObject("defaultImage1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,49 @@ namespace GKProj3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap defaultImage1 {
+        internal static System.Drawing.Bitmap defaultImage2 {
             get {
-                object obj = ResourceManager.GetObject("defaultImage1", resourceCulture);
+                object obj = ResourceManager.GetObject("defaultImage2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap defaultImage3 {
+            get {
+                object obj = ResourceManager.GetObject("defaultImage3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap defaultImage4 {
+            get {
+                object obj = ResourceManager.GetObject("defaultImage4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap defaultImage5 {
+            get {
+                object obj = ResourceManager.GetObject("defaultImage5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap defaultImage6 {
+            get {
+                object obj = ResourceManager.GetObject("defaultImage6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

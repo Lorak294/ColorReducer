@@ -91,7 +91,7 @@ namespace GKProj3
             }
         }
 
-        public Bitmap Reduce(int rk, int gk, int bk)
+        public async Task<Bitmap> ReduceAsync(int rk, int gk, int bk)
         {
             Bitmap reducedImage = new Bitmap(imageWidth, imageHeight);
 
@@ -132,7 +132,7 @@ namespace GKProj3
                 }
             }
 
-            return reducedImage;
+            return await Task.FromResult(reducedImage);
         }
 
         private static int QuantizeChannel(double value, int levelsN)
