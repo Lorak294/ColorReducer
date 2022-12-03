@@ -7,20 +7,10 @@ namespace GKProj3
 {
     public partial class Form1 : Form
     {
-        Control errorControl, popularityControl, kmeansControl;
         public Form1()
         {
             InitializeComponent();
-            errorControl = propagationPictureBox;
-            popularityControl = popularityPictureBox;
-            kmeansControl = kmeansPictureBox;
-
-
             comboBox1.SelectedIndex = 0;
-
-            //propagationPictureBox.Image = (Bitmap)mainPictureBox.Image.Clone();
-            //popularityPictureBox.Image = (Bitmap)mainPictureBox.Image.Clone();
-            //kmeansPictureBox.Image = (Bitmap)mainPictureBox.Image.Clone();
         }
 
         private void changeImageBtn_Click(object sender, EventArgs e)
@@ -42,7 +32,7 @@ namespace GKProj3
             }
         }
 
-        private async void clusterImageBtn_Click(object sender, EventArgs e)
+        private void clusterImageBtn_Click(object sender, EventArgs e)
         {
             ErrorDiffusionColorReducer.Modes mode;
             switch (comboBox1.SelectedIndex)
@@ -60,19 +50,32 @@ namespace GKProj3
                     throw new Exception("wrong filter mode selected");
             }
 
-            ErrorDiffusionColorReducer ecr = new ErrorDiffusionColorReducer((Bitmap)mainPictureBox.Image, mode);
-            PopularityColorReducer pcr = new PopularityColorReducer((Bitmap)mainPictureBox.Image);
-            KMeansColorReducer kcr = new KMeansColorReducer((Bitmap)mainPictureBox.Image, epsilonTrackBar.Value);
 
-            List<Task<Bitmap>> reductionTasks = new List<Task<Bitmap>>();
-            reductionTasks.Add(ecr.ReduceAsync((int)rNumeric.Value, (int)gNumeric.Value, (int)bNumeric.Value));
-            reductionTasks.Add(pcr.ReduceAsync(colorsTrackBar.Value));
-            reductionTasks.Add(kcr.ReduceAsync(colorsTrackBar.Value));
+            int colorN = colorsTrackBar.Value;
+            int eps = epsilonTrackBar.Value;
+            Bitmap image1 = (Bitmap)mainPictureBox.Image.Clone();
+            Bitmap image2 = (Bitmap)mainPictureBox.Image.Clone();
+            Bitmap image3 = (Bitmap)mainPictureBox.Image.Clone();
+            Task task1 = Task.Run(() => PerformErrorReduction(image1, mode, (int)rNumeric.Value, (int)gNumeric.Value, (int)bNumeric.Value));
+            Task task2 = Task.Run(() => PerformPopularityReduction(image2, colorN));
+            Task task3 = Task.Run(() => PerformKmeansReduction(image3, colorN, eps));
+        }
 
-            propagationPictureBox.Image = await reductionTasks[0];
-            popularityPictureBox.Image = await reductionTasks[1];
-            kmeansPictureBox.Image = await reductionTasks[2];
+        private void PerformErrorReduction(Bitmap image, Modes mode, int rK, int gK, int bK)
+        {
+            ErrorDiffusionColorReducer cr = new ErrorDiffusionColorReducer(image, mode);
+            propagationPictureBox.Image = cr.Reduce(rK, gK, bK);
+        }
 
+        private void PerformPopularityReduction(Bitmap image,int colorN)
+        {
+            PopularityColorReducer cr = new PopularityColorReducer(image);
+            popularityPictureBox.Image = cr.Reduce(colorN);
+        }        
+        private void PerformKmeansReduction(Bitmap image,int colorN, int epsilon)
+        {
+            KMeansColorReducer cr = new KMeansColorReducer(image,epsilon);
+            kmeansPictureBox.Image = cr.Reduce(colorN);
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
@@ -81,13 +84,6 @@ namespace GKProj3
                 clusterImageBtn.Text = "Cluster image to 1 color";
             else
                 clusterImageBtn.Text = $"Cluster image to {colorsTrackBar.Value} colors";
-
-
-            int singleChannelN = (int)Math.Max(1,Math.Pow(colorsTrackBar.Value, (double)1 / 3));
-            
-            rNumeric.Value = singleChannelN;
-            gNumeric.Value = singleChannelN;
-            bNumeric.Value = singleChannelN;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

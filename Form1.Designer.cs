@@ -65,6 +65,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.propagationPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
@@ -149,7 +150,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(76, 10);
+            this.label7.Location = new System.Drawing.Point(81, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(240, 15);
             this.label7.TabIndex = 10;
@@ -326,7 +327,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(90, 10);
+            this.label8.Location = new System.Drawing.Point(80, 10);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(204, 15);
             this.label8.TabIndex = 11;
@@ -369,7 +370,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(105, 10);
+            this.label9.Location = new System.Drawing.Point(108, 10);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(195, 15);
             this.label9.TabIndex = 12;
@@ -437,6 +438,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.colorsTrackBar);
             this.panel1.Controls.Add(this.clusterImageBtn);
             this.panel1.Controls.Add(this.changeImageBtn);
@@ -580,6 +582,15 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(106, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(325, 15);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "* propagation of uncertanity has to be configured separately";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -659,5 +670,6 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
+        private Label label10;
     }
 }

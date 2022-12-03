@@ -22,11 +22,12 @@ namespace GKProj3
             Stucky
         }
 
-        public ErrorDiffusionColorReducer(Bitmap baseImage, Modes mode)
+        public ErrorDiffusionColorReducer(Bitmap baseImage, Modes mode, ProgressBar? progressBar = null)
         {
             imageWidth = baseImage.Width;
             imageHeight = baseImage.Height;
-
+            
+            // set bitmap data as array of bytes
             pixels = new double[imageWidth * imageHeight * 3];
 
             int pixelIdx = 0;
@@ -43,6 +44,7 @@ namespace GKProj3
                 }
             }
 
+            // set filter matrix
             switch (mode)
             {
                 case Modes.FloydSteinberg:
@@ -91,27 +93,28 @@ namespace GKProj3
             }
         }
 
-        public async Task<Bitmap> ReduceAsync(int rk, int gk, int bk)
+        public Bitmap Reduce(int rk, int gk, int bk)
         {
+
             Bitmap reducedImage = new Bitmap(imageWidth, imageHeight);
 
             // main loop
             int pixelIdx = 0;
-             for (int y = 0; y < imageHeight; y++)
-             {
+            for (int y = 0; y < imageHeight; y++)
+            {
                 for (int x = 0; x < imageWidth; x++)
                 {
                     Color colorToDisplay = Color.FromArgb(
                         QuantizeChannel(pixels[pixelIdx], rk),
-                        QuantizeChannel(pixels[pixelIdx+1], gk),
-                        QuantizeChannel(pixels[pixelIdx+2], bk)
+                        QuantizeChannel(pixels[pixelIdx + 1], gk),
+                        QuantizeChannel(pixels[pixelIdx + 2], bk)
                         );
 
                     reducedImage.SetPixel(x, y, colorToDisplay);
 
                     double errorR = pixels[pixelIdx] - colorToDisplay.R;
-                    double errorG = pixels[pixelIdx+1] - colorToDisplay.G;
-                    double errorB = pixels[pixelIdx+2] - colorToDisplay.B;
+                    double errorG = pixels[pixelIdx + 1] - colorToDisplay.G;
+                    double errorB = pixels[pixelIdx + 2] - colorToDisplay.B;
 
 
                     for (int i = -fx; i <= fx; i++)
@@ -124,15 +127,15 @@ namespace GKProj3
                             int updateIdx = pixelIdx + (i + j * imageWidth) * 3;
 
                             pixels[updateIdx] += (errorR / filterSum) * filter[fx + i, fy + j];
-                            pixels[updateIdx+1] += (errorG / filterSum) * filter[fx + i, fy + j];
-                            pixels[updateIdx+2] += (errorB / filterSum) * filter[fx + i, fy + j];
+                            pixels[updateIdx + 1] += (errorG / filterSum) * filter[fx + i, fy + j];
+                            pixels[updateIdx + 2] += (errorB / filterSum) * filter[fx + i, fy + j];
                         }
                     }
+
                     pixelIdx += 3;
                 }
             }
-
-            return await Task.FromResult(reducedImage);
+            return reducedImage;
         }
 
         private static int QuantizeChannel(double value, int levelsN)
@@ -147,5 +150,6 @@ namespace GKProj3
             int r = (int)k;
             return (int)((k > r + 0.5 ? r + 1 : r) * step);
         }
+
     }
 }
