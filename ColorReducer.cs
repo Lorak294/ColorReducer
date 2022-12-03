@@ -16,7 +16,7 @@ namespace GKProj3
         protected byte[] pixels;
         protected int imageWidth;
         protected int imageHeight;
-        //protected int bytesPerPixel;
+
         public ColorReducer(Bitmap baseImage)
         {
             imageWidth = baseImage.Width;
@@ -37,9 +37,8 @@ namespace GKProj3
                     pixelIdx += 3;
                 }
             }
-
         }
-        public abstract Task<Bitmap> ReduceAsync(int ColorN);
+        public abstract Bitmap Reduce(int ColorN);
 
         protected int ColorsDistance2(Color c1, Color c2)
         {
@@ -71,7 +70,7 @@ namespace GKProj3
             displayColors = new Color[0];
         }
 
-        public async override Task<Bitmap> ReduceAsync(int colorN)
+        public override Bitmap Reduce(int colorN)
         {
             displayColors = indexes.Take(colorN).Select(idx => ColorFromIndex(idx)).ToArray();
 
@@ -87,7 +86,7 @@ namespace GKProj3
                     pixelIdx += 3;
                 }
             }
-            return await Task.FromResult(reducedImage);
+            return reducedImage;
         }
 
         private Color CalcDisplayColor(Color col)
@@ -121,7 +120,7 @@ namespace GKProj3
         {
             this.epsilon = epsilon;
         }
-        public async override Task<Bitmap> ReduceAsync(int colorN)
+        public override Bitmap Reduce(int colorN)
         {
             Color[] centroids = new Color[colorN];
             Random random = new Random();
@@ -129,6 +128,7 @@ namespace GKProj3
             (int R, int G, int B)[] centroidSums = new (int R, int G, int B)[colorN];
             int[] centroidCount = new int[colorN];
 
+            
             // choose random initial centroids
             for(int i=0;i<colorN;i++)
             {
@@ -137,13 +137,10 @@ namespace GKProj3
             }
 
 
-            int iterationCount = 0;
             bool centroidsChange = true;
             // kmeans algorithm loop
             while (centroidsChange)
             {
-                iterationCount++;
-
                 // assign pixels to centorids
                 for(int pixelIdx=0; pixelIdx<pixels.Length; pixelIdx+=3 )
                 {
@@ -181,7 +178,7 @@ namespace GKProj3
                     pixelId++;
                 }
             }
-            return await Task.FromResult(reducedImage);
+            return reducedImage;
         }
 
         private int GetClosestCentroid(Color c, Color[] centroids)
