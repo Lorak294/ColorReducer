@@ -4,4 +4,4 @@ Application for reducing image color number using 3 alghorithms:
 -
 -
 Application UI:
-![My Image](ColorReducer.jpg)
+![My Image](ColorReducer.png)
