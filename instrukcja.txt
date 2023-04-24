@@ -1,0 +1,18 @@
+Instrukcja obsługi aplikacji Color Reducer
+
+Aby zredukować liczbę kolorów obrazka należy wybrać za pomocą suwaka docelową liczbę kolorów,
+a następnie nacisnąć przysisk "Cluster Image to X colors". 
+
+W przypadku metody propagacji błędu,
+przed naciśnieciem wspomnianego przycisku należy oddzielnie skonfigurować liczbę kolorów dla każdego kanału:
+(dla 0 na danym kanale zawsze wybierana będzie wartość 0, a dla 1 wartość 255). Dla tej metody można również 
+wybrac jedną z trzzech macieży filtra używanego podczas redukcji.
+
+Dla metody k-średnich można dostosować epsilon, który określa kiedy różnica na danym kanale uznawana jest za tą samą wartość.
+Kolory uznawane są za równe, jeżeli różnica na każdym z kanałów jest niewiększa od epsilona.
+
+Aby zmienić obrazek można wybrać inny z sześciu domyślnych widocznych po prawej stronie przez kliknięcie danego obrazka, 
+lub nacisnąć przycisk "Upload Image" i wybrać własny plik z obrazem.
+
+Redukcja dla każdej z metod jest przeprowadzana równolegle na osobnym wątku, a po jej zakończeniu na odpowiednim panelu
+pojawia się zredukowany obraz.

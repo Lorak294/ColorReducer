@@ -140,10 +140,10 @@ namespace GKProj3
 
         private static int QuantizeChannel(double value, int levelsN)
         {
-            if (levelsN <= 1)
-            {
+            if (levelsN < 0)
                 return 0;
-            }
+            if (levelsN == 1)
+                return 255;
 
             double step = 255.0 / (levelsN - 1);
             double k = value / step;
